@@ -5,10 +5,21 @@ import time
 import pika
 import random
 import os
+import BlynkLib
 ####Hum & Temp ###
 import adafruit_dht
 from board import *
+BLYNK_TEMPLATE_ID = "TMPLwRnu6EOo"
+BLYNK_DEVICE_NAME = "MonitorControl"
+BLYNK_AUTH_TOKEN = "Nhqs6DflGfI3w7opYwAvaTjVjfDh3MbH"
+BLYNK_FIRMWARE_VERSION = "0.1.0"
+T_PIN = 0
+H_PIN = 1
 
+F_PIN = 2
+S_PIN = 3
+blynk = BlynkLib.Blynk(BLYNK_AUTH_TOKEN)
+MSG_NOTIFY = 14
 # GPIO17
 
 SENSOR_PIN = D5
@@ -63,6 +74,7 @@ def callback2(channel12):
         
     else:
         print("led on")
+        blynk.log_event('flame_event', 'Hello') #flame_event
         GPIO.output(25,GPIO.HIGH)
         time.sleep(2)
         return('1')
@@ -123,6 +135,17 @@ def checkdht():
             message=str(sound)+":"+str(flame)+":"+str(h)+":"+str(t)
             channel.basic_publish(exchange='logs', routing_key='', body= message)
             print ("sent %r" %message) 
+           ########
+            blynk.run()
+            blynk.virtual_write(T_PIN, t)
+            blynk.virtual_write(H_PIN, h)
+            blynk.virtual_write(F_PIN, flame*255)
+            blynk.virtual_write(S_PIN, sound*100)
+            if temperature > 20:
+                blynk.log_event('temp_event', 'Hello')
+            if humidity > 25:
+                blynk.log_event('humidity_event', 'Hello')  
+            print('Temperature: ',temperature,'\tHumidity: ',humidity,'\t\tFlame: ',fla$
 
         except RuntimeError:
             pass
