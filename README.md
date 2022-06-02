@@ -1,2 +1,2 @@
-# pri-blynk
-pri-blynk
+# rpi-blynk
+rpi-blynk
