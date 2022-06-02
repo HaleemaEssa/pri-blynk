@@ -11,7 +11,7 @@ RUN pip install pika
 #RUN pip3 install --upgrade setuptools
 RUN python3 -m pip install --upgrade pip setuptools wheel                                                                                                                                                                                                
 RUN pip3 install adafruit-circuitpython-dht
-
+RUN pip3 install https://github.com/vshymanskyy/blynk-library-python/archive/master.tar.gz
 #RUN python3 -m pip install Adafruit_DHT
 #RUN pip install python3-dev
 #RUN pip3 install adafruit-dht
