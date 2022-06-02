@@ -60,6 +60,7 @@ def callback1(channel1):
     if GPIO.input(channel1):
         return('0')
     else:
+        blynk.log_event('sound_event', 'Hello')
         return('1')
     return sound    #
     sound=0
