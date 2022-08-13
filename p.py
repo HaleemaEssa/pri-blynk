@@ -61,7 +61,7 @@ def callback1(channel1):
     if GPIO.input(channel1):
         return('0')
     else:
-        blynk.log_event('sound_event', 'Hello')
+        blynk.log_event('sound_event', 'Sound Detected')
         return('1')
     return sound    #
     sound=0
@@ -77,7 +77,7 @@ def callback2(channel12):
         print("led on")
         #blynk.log_event('flame_event', 'Hello') #flame_event
         GPIO.output(25,GPIO.HIGH)
-        blynk.log_event('flame_event', 'Hello') #flame_event
+        blynk.log_event('flame_event', 'Flame Detected') #flame_event
         time.sleep(2)
         return('1')
     return flame    #
@@ -137,9 +137,9 @@ def callback4():
             blynk.virtual_write(H_PIN, h)
             blynk.virtual_write(F_PIN, flame*255)
             blynk.virtual_write(S_PIN, sound*100)
-            if t > 20:
+            if t > 30:
                 blynk.log_event('temp_event', 'Humidity is High')
-            if h > 27:
+            if h > 60:
                 blynk.log_event('humidity_event', 'Temperature is High')
         #    if flame == 1:
          #       blynk.log_event('flame_event', 'Flame Notification')
