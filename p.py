@@ -125,7 +125,7 @@ def callback4():
 ###@# infinite loop
 #while True:
  #       time.sleep(3)
- def checkdht():
+def checkdht():
     for i in range(10):
         try:
             h, t =callback4()
