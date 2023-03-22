@@ -70,7 +70,7 @@ GPIO.add_event_callback(channel1, callback1)  # assign function to GPIO PIN, Run
 def callback2(channel12):
     if GPIO.input(channel12):
         GPIO.output(25,GPIO.LOW)
-        time.sleep(2)    
+        #time.sleep(2)    
         return('0')
 
     else:
@@ -78,7 +78,7 @@ def callback2(channel12):
         #blynk.log_event('flame_event', 'Hello') #flame_event
         GPIO.output(25,GPIO.HIGH)
         blynk.log_event('flame_event', 'Flame Detected') #flame_event
-        time.sleep(2)
+        #time.sleep(2)
         return('1')
     return flame    #
     flame=0
@@ -126,20 +126,20 @@ def callback4():
 #while True:
  #       time.sleep(3)
 def checkdht():
-    for i in range(10):
+    for i in range(20):
         try:
             h, t =callback4()
             sound=callback1(channel1)
             flame=callback2(channel12)
 ######
-            blynk.run()
+            blynhttps://github.com/HaleemaEssa/rpi-blynk.gitk.run()
             blynk.virtual_write(T_PIN, t)
             blynk.virtual_write(H_PIN, h)
             blynk.virtual_write(F_PIN, flame*255)
             blynk.virtual_write(S_PIN, sound*100)
-            if t > 30:
+            if t > 28:
                 blynk.log_event('temp_event', 'Humidity is High')
-            if h > 60:
+            if h > 50:
                 blynk.log_event('humidity_event', 'Temperature is High')
         #    if flame == 1:
          #       blynk.log_event('flame_event', 'Flame Notification')
