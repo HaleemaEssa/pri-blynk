@@ -132,7 +132,7 @@ def checkdht():
             sound=callback1(channel1)
             flame=callback2(channel12)
 ######
-            blynhttps://github.com/HaleemaEssa/rpi-blynk.gitk.run()
+            blynk.run()
             blynk.virtual_write(T_PIN, t)
             blynk.virtual_write(H_PIN, h)
             blynk.virtual_write(F_PIN, flame*255)
