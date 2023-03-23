@@ -70,7 +70,7 @@ GPIO.add_event_callback(channel1, callback1)  # assign function to GPIO PIN, Run
 def callback2(channel12):
     if GPIO.input(channel12):
         GPIO.output(25,GPIO.LOW)
-        #time.sleep(2)    
+        time.sleep(2)    
         return('0')
 
     else:
@@ -78,7 +78,7 @@ def callback2(channel12):
         #blynk.log_event('flame_event', 'Hello') #flame_event
         GPIO.output(25,GPIO.HIGH)
         blynk.log_event('flame_event', 'Flame Detected') #flame_event
-        #time.sleep(2)
+        time.sleep(2)
         return('1')
     return flame    #
     flame=0
